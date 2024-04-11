@@ -20,7 +20,7 @@
                     <tr>
     
                     <td>{{$movie->title}}</td>
-                    <td><a href="">Visualizza film</a></td>
+                    <td><a href="{{ route('comic.show', $movie->id )}}">Visualizza film</a></td>
                     
                     </tr>
 

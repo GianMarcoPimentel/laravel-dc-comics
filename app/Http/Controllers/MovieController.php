@@ -44,7 +44,7 @@ class MovieController extends Controller
         //$movie = Movie::where('id', $id)->first();
         /* $movie = Movie::find($id); */
         //dd($movie);
-        return view("comic/show",compact("movie"));
+        return view("comic.show",compact("movie"));
     }
 
     /**
