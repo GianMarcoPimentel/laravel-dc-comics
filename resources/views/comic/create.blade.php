@@ -4,13 +4,15 @@
 <div class="container py-5">
     <h1>Aggiungi un Film</h1>
 
-    <form action="">
+
+{{--     scrivo il nome della rotta come action e so dal terminale che il metodo della store è POST --}}    
+    <form action="{{ route('movies.store')}}" method="POST">
         @csrf
 
 
         <div class="mb-3">
-          <label for="name" class="form-label">Nome della pasta</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <label for="title" class="form-label">Nome del film</label>
+          <input type="text" class="form-control" id="title" name="title">
         </div>
         
         <div class="mb-3">
@@ -49,8 +51,8 @@
         </div>
 
         <div class="mb-3 ">
-          <label class="form-check-label" for="artists">Scrittori</label>
-          <input type="text" class="form-control" id="artists" name=" artists">
+          <label class="form-check-label" for="writers">Scrittori</label>
+          <input type="text" class="form-control" id="artists" name=" writers">
         </div>
 
 

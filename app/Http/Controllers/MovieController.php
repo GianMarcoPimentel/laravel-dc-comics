@@ -32,7 +32,23 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* $movie = $request->all('');
+        dd($movie); */
+        $newMovie = new Movie();
+
+        $newMovie->title = $request->title;
+        $newMovie->description = $request->description;
+        $newMovie->thumb = $request->thumb;
+        $newMovie->price = $request->price;
+        $newMovie->series = $request->series;
+        $newMovie->sale_date = $request->sale_date;
+        $newMovie->type = $request->type;
+        $newMovie->artists =  $request->artists;
+        $newMovie->writers =  $request->writers;
+        
+        $newMovie->save();
+
+        return redirect()->route('movies.index');
     }
 
     /**
