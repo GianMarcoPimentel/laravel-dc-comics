@@ -38,9 +38,13 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Movie $movie)
     {
-        //
+        //utilizzo il metofo ->first() per ottenere direttamente un oggetto di tipo Movie
+        //$movie = Movie::where('id', $id)->first();
+        /* $movie = Movie::find($id); */
+        //dd($movie);
+        return view("comic/show",compact("movie"));
     }
 
     /**

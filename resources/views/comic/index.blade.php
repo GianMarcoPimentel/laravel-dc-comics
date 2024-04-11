@@ -8,7 +8,7 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">Nome</th>
+                <th scope="col">Nome del Film</th>
                 <th scope="col"></th>
                 
               </tr>
