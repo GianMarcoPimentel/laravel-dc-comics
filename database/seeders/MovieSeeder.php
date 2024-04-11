@@ -13,11 +13,11 @@ class MovieSeeder extends Seeder
      */
     public function run(): void
     {
-        $movies = config("comics");
+        $movies = config('comics');
 
-        $this->command->info(print_r($movies));
+       /*  $this->command->info(print_r($movies)); */
 
-        /* foreach ($movies as $movie) {
+        foreach ($movies as $movie) {
 
         $newMovie = new Movie();
 
@@ -28,12 +28,12 @@ class MovieSeeder extends Seeder
         $newMovie->series = $movie['series'];
         $newMovie->sale_date = $movie['sale_date'];
         $newMovie->type = $movie['type'];
-        $newMovie->artists = $movie['artists'];
-        $newMovie->writers = $movie['writers'];
+        $newMovie->artists = implode(' , ', $movie['artists']);
+        $newMovie->writers = implode(' , ', $movie['writers']);
         
         $newMovie->save();
 
-        } */
+        }
 
     }
 }
