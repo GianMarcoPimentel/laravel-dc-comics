@@ -20,7 +20,7 @@
                     <tr>
     
                     <td>{{$movie->title}}</td>
-                    <td><a href="{{ route('comic.show', $movie->id )}}">Visualizza film</a></td>
+                    <td><a href="{{ route('movies.show', $movie->id )}}">Visualizza film</a></td>
                     
                     </tr>
 
@@ -29,6 +29,6 @@
             </tbody>
           </table>
 
-
+          <a href="{{ route('movies.create')}}" class="btn btn-primary">Aggiungi Film</a>
     </div>
 @endsection
