@@ -43,8 +43,8 @@ class MovieController extends Controller
         $newMovie->series = $request->series;
         $newMovie->sale_date = $request->sale_date;
         $newMovie->type = $request->type;
-        $newMovie->artists =  $request->artists;
-        $newMovie->writers =  $request->writers;
+        $newMovie->artists = $request->artists;
+        $newMovie->writers = $request->writers;
         
         $newMovie->save();
 
