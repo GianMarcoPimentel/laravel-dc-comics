@@ -9,15 +9,16 @@
     </p>
     <img src="{{$movie->thumb}}" alt="">
 
-    <div class="info">
-        <h3>Info : </h3>
+    <h3>Info : </h3>
+    <div class="info bg-warning ">
         <p>Prezzo : {{$movie->price}}</p>
         <p>Serie : {{$movie->series}}</p>
         <p>Data di uscita : {{$movie->sale_date}}</p>
         <p>Tipologia : {{$movie->type}}</p>
     </div>
+
+    <h3>Collaboratori :</h3>
     <div class="collaborators">
-        <h3>Collaboratori :</h3>
         <p>Artisti : {{$movie->artists}}</p>
         <p>Scrittori : {{$movie->writers}}</p>
     </div>
