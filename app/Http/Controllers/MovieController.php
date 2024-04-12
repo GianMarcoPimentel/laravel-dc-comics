@@ -99,8 +99,12 @@ class MovieController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Movie $movie)
     {
-        //
+        //devo dire di cancellare il movie scelto
+        $movie->delete();
+
+        //devo ritornare alla pagina iniziale
+        return redirect()->route('movies.index');
     }
 }

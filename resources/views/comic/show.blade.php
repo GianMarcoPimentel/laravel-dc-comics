@@ -25,7 +25,15 @@
 </div>
 <div class="container py-5">
     <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-primary">Modifica</a>
-{{--     <a href="{{route('pastas.edit', $pasta->id)}}" class="btn btn-warning">Modifica</a>
- --}}</div>
+   
+    
+    
+    <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
+        @csrf
+        @method("DELETE")
+    <button class="btn btn-danger">Elimina<button>
+    
+    </form>
+</div>
 @endsection
 
