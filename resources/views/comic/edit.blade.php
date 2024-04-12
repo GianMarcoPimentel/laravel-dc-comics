@@ -8,6 +8,8 @@
     {{-- @dd($movie) --}}
     <form action="{{ route('movies.update', $movie->id )}}" method="POST">
         @csrf
+
+        {{-- metodo specifico per utilizzare il metodo PUT in Laravel --}}
         @method('PUT')
 
 

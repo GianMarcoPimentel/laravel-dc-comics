@@ -23,5 +23,9 @@
         <p>Scrittori : {{$movie->writers}}</p>
     </div>
 </div>
+<div class="container py-5">
+    <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-primary">Modifica</a>
+{{--     <a href="{{route('pastas.edit', $pasta->id)}}" class="btn btn-warning">Modifica</a>
+ --}}</div>
 @endsection
 
