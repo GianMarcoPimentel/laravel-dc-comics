@@ -74,9 +74,26 @@ class MovieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Movie $movie)
     {
-        //
+        // modifico la function update() in MovieController
+        // per poi reindirizzarla nela rout list di comic.show 
+        // e averla in pagina
+        $movie = new Movie();
+
+        $movie->title = $request->title;
+        $movie->description = $request->description;
+        $movie->thumb = $request->thumb;
+        $movie->price = $request->price;
+        $movie->series = $request->series;
+        $movie->sale_date = $request->sale_date;
+        $movie->type = $request->type;
+        $movie->artists = $request->artists;
+        $movie->writers = $request->writers;
+        
+        $movie->save();
+
+        return redirect()->route('movies.show', $movie->id);
     }
 
     /**
