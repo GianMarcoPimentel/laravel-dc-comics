@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MovieController extends Controller
 {
@@ -34,6 +35,28 @@ class MovieController extends Controller
     {
         /* $movie = $request->all('');
         dd($movie); */
+
+        // devo validare la mia richiesta
+        //fare i controlli opportuni per far si che i dati siano correttamente insieriti nel db
+        // devo fare i controlli sulla request
+
+        // con validate() controllo le regole scelte da noi per i vari campi che riceviamo nel form
+        //se le validazione non vanno a buon fine laravel in automatico fa tornare l'utente indietro
+        // e fornirà alla pagina precedente le indicazioni sull'errore)
+        $request->validate([
+            //tutte le regole che devo far rispettare           
+                'title' => 'required',
+                'description'=> 'nullable|MAX:1500',
+                'thumb'=> 'nullable|MAX:1500',
+                'price'=> 'required|MAX:7',
+                'series'=>'required|MAX:255',
+                'sale_date'=>'required|MAX:10',
+                'type'=>'required|MAX:100',
+                'artists'=>'required|MAX:7',
+                'writers'=>'required|MAX:7',
+        ]);
+
+        
         $newMovie = new Movie();
 
         $newMovie->title = $request->title;
@@ -79,7 +102,9 @@ class MovieController extends Controller
         // modifico la function update() in MovieController
         // per poi reindirizzarla nela rout list di comic.show 
         // e averla in pagina
-        $movie = new Movie();
+       /*  $movie = new Movie();
+
+ */
 
         $movie->title = $request->title;
         $movie->description = $request->description;
@@ -93,7 +118,7 @@ class MovieController extends Controller
         
         $movie->save();
 
-        return redirect()->route('movies.show', $movie->id);
+        return redirect()->route('movies.index', $movie->id);
     }
 
     /**
@@ -107,4 +132,6 @@ class MovieController extends Controller
         //devo ritornare alla pagina iniziale
         return redirect()->route('movies.index');
     }
+
+    
 }

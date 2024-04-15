@@ -29,6 +29,7 @@
             </tbody>
           </table>
 
-          <a href="{{ route('movies.create')}}" class="btn btn-primary">Aggiungi Film</a>
+          <a href="{{ route('movies.create')}}" class="btn btn-info">Aggiungi Film</a>
+          {{-- btn btn-info --}}
     </div>
 @endsection
