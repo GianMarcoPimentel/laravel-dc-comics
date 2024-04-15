@@ -55,7 +55,20 @@
           <input type="text" class="form-control" id="writers" name=" writers" value="{{ old('writers') }}">
         </div>
 
-      
+        {{-- @dump($errors) --}}
+
+        {{-- mostro l'eventuale errore in pagina --}}
+      @if($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+            @foreach($errors->all() as $error)
+            <li>
+              {{ $error }}
+            </li>
+            @endforeach
+          </ul>
+        </div>
+      @endif 
         <button type="submit" class="btn btn-primary">Aggiungi</button>
       </form>
 </div>
