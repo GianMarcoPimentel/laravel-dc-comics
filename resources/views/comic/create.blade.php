@@ -15,7 +15,7 @@
           <input 
           type="text" 
           class="form-control
-          @error('price')
+          @error('title')
           is-invalid 
           @enderror" 
           id="title" 
