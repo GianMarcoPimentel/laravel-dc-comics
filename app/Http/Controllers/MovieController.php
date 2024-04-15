@@ -43,20 +43,9 @@ class MovieController extends Controller
         // con validate() controllo le regole scelte da noi per i vari campi che riceviamo nel form
         //se le validazione non vanno a buon fine laravel in automatico fa tornare l'utente indietro
         // e fornirà alla pagina precedente le indicazioni sull'errore)
-        $request->validate([
-            //tutte le regole che devo far rispettare           
-                'title' => 'required',
-                'description'=> 'nullable|MAX:1500',
-                'thumb'=> 'nullable|MAX:1500',
-                'price'=> 'required|MAX:7',
-                'series'=>'required|MAX:255',
-                'sale_date'=>'required|MAX:10',
-                'type'=>'required|MAX:100',
-                'artists'=>'required|MAX:2000',
-                'writers'=>'required|MAX:2000',
-        ]);
-
         
+        //richiamo la funzione validation() con tutte le request 
+        $this->validation($request->all());
         $newMovie = new Movie();
 
         $newMovie->title = $request->title;
@@ -106,6 +95,9 @@ class MovieController extends Controller
 
  */
 
+        //richiamo la funzione validation() con tutte le request 
+        $this->validation($request->all());
+
         $movie->title = $request->title;
         $movie->description = $request->description;
         $movie->thumb = $request->thumb;
@@ -134,4 +126,23 @@ class MovieController extends Controller
     }
 
     
+    //creo una funzioan privata per i controlli di validazione 
+    //e la comunizaizone dei messaggi di errore nella pagina create.blade.php
+    //poi richiameremo i metodi nello store e nell'update
+
+    private function validation($data){
+        //introduco la variabile validator
+        $validator = Validator::make($data, [
+            'title'=> 'required|max:255',
+            'description'=> 'nullable|max:1500',
+            'thum'=>'nullable|max:1500',
+            'price'=>'required|max:7',
+            'series'=>'required|max:255',
+            'type'=>'required|MAX:100',
+            'artists'=>'required|MAX:2000',
+            'writers'=>'required|MAX:2000',
+
+        ])->validate();
+    }
+   
 }
