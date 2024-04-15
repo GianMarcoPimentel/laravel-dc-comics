@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('title',);
             $table->text('description')->nullable();
             $table->text('thumb')->nullable();
-            $table->string('price');
+            $table->string('price',6);
             $table->string('series');
-            $table->date('sale_date');
+            $table->date('sale_date',);
             $table->string('type');
             $table->text('artists');
             $table->text('writers');
