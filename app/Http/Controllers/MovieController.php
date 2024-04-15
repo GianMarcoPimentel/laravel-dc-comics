@@ -138,6 +138,7 @@ class MovieController extends Controller
             'thum'=>'nullable|max:1500',
             'price'=>'required|max:7',
             'series'=>'required|max:255',
+            'sale_date'=>'required|max:10',
             'type'=>'required|max:100',
             'artists'=>'required|max:2000',
             'writers'=>'required|max:2000',
@@ -150,12 +151,14 @@ class MovieController extends Controller
             'price.max'=> 'Il prezzo deve contenere massimo :max caratteri',
             'series.required'=> 'Devi inserire la serie',
             'series.max'=> 'La serie deve contenere massimo :max caratteri',
+            'sale_date.required'=> 'Devi inserire la data di uscita in formato YYYY-MM-GG',
+            'sale_date.max'=> 'La data di uscita deve contenere massimo :max caratteri',
             'type.required'=> 'Devi inserire la tipologia',
             'type.max'=> 'La tipologia deve contenere massimo :max caratteri',
             'artists.required'=> "Devi inserire l'artista o gli artisti",
-            'artists.max'=> 'Questo campo deve contenere massimo :max caratteri',
+            'artists.max'=> 'Il campo per gli artisti deve contenere massimo :max caratteri',
             'writers.required'=> "Devi inserire lo scrittore o gli scrittori",
-            'writers.max'=> 'Questo campo deve contenere massimo :max caratteri',
+            'writers.max'=> 'Il campo per gli scrittori deve contenere massimo :max caratteri',
             
             
             
