@@ -97,7 +97,7 @@ class MovieController extends Controller
 
         //richiamo la funzione validation() con tutte le request 
         $this->validation($request->all());
-
+ 
         $movie->title = $request->title;
         $movie->description = $request->description;
         $movie->thumb = $request->thumb;
@@ -138,11 +138,29 @@ class MovieController extends Controller
             'thum'=>'nullable|max:1500',
             'price'=>'required|max:7',
             'series'=>'required|max:255',
-            'type'=>'required|MAX:100',
-            'artists'=>'required|MAX:2000',
-            'writers'=>'required|MAX:2000',
-
+            'type'=>'required|max:100',
+            'artists'=>'required|max:2000',
+            'writers'=>'required|max:2000',
+        ], [
+            'title.required'=> 'Devi inserire il titolo',
+            'title.max'=> 'Il titolo deve contenere massimo :max caratteri',
+            'description.max'=> 'La descrizione deve contenere massimo :max caratteri',
+            'thum.max'=> "l'url deve contenere massimo :max caratteri",
+            'price.required'=> 'Devi inserire il prezzo',
+            'price.max'=> 'Il prezzo deve contenere massimo :max caratteri',
+            'series.required'=> 'Devi inserire la serie',
+            'series.max'=> 'La serie deve contenere massimo :max caratteri',
+            'type.required'=> 'Devi inserire la tipologia',
+            'type.max'=> 'La tipologia deve contenere massimo :max caratteri',
+            'artists.required'=> "Devi inserire l'artista o gli artisti",
+            'artists.max'=> 'Questo campo deve contenere massimo :max caratteri',
+            'writers.required'=> "Devi inserire lo scrittore o gli scrittori",
+            'writers.max'=> 'Questo campo deve contenere massimo :max caratteri',
+            
+            
+            
         ])->validate();
+
     }
    
 }
