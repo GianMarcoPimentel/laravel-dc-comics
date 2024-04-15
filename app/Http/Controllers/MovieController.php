@@ -52,8 +52,8 @@ class MovieController extends Controller
                 'series'=>'required|MAX:255',
                 'sale_date'=>'required|MAX:10',
                 'type'=>'required|MAX:100',
-                'artists'=>'required|MAX:7',
-                'writers'=>'required|MAX:7',
+                'artists'=>'required|MAX:2000',
+                'writers'=>'required|MAX:2000',
         ]);
 
         
