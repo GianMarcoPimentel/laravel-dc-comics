@@ -65,7 +65,7 @@
   
         <div class="mb-3 ">
           <label class="form-label" for="sale_date">Uscita</label>
-          <input type="text" class="form-control @error('sale_date') is-invalid @enderror" id="sale_date" name=" sale_date" value="{{old('sale_date') ?? $movie->sale_date}}">
+          <input type="date" class="form-control @error('sale_date') is-invalid @enderror" id="sale_date" name=" sale_date" value="{{old('sale_date') ?? $movie->sale_date}}">
         </div>
          @error('sale_date')
         <div class="alert alert-danger">
