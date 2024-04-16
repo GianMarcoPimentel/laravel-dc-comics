@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMovieRequest;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -17,7 +18,7 @@ class MovieController extends Controller
         $movies = Movie::all();
         // dd($movie);
 
-        return view("comic.index",compact("movies"));
+        return view("movie.index",compact("movies"));
     }
 
     /**
@@ -25,13 +26,13 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('comic.create');
+        return view('movie.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreMovieRequest $request)
     {
         /* $movie = $request->all('');
         dd($movie); */
@@ -45,7 +46,9 @@ class MovieController extends Controller
         // e fornirà alla pagina precedente le indicazioni sull'errore)
         
         //richiamo la funzione validation() con tutte le request 
-        $this->validation($request->all());
+        //$this->validation($request->all());
+        $request->validated();
+
         $newMovie = new Movie();
 
         $newMovie->title = $request->title;
@@ -72,7 +75,7 @@ class MovieController extends Controller
         //$movie = Movie::where('id', $id)->first();
         /* $movie = Movie::find($id); */
         //dd($movie);
-        return view("comic.show",compact("movie"));
+        return view("movie.show",compact("movie"));
     }
 
     /**
@@ -80,23 +83,24 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        return view('comic.edit', compact('movie'));
+        return view('movie.edit', compact('movie'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Movie $movie)
+    public function update(StoreMovieRequest $request, Movie $movie)
     {
         // modifico la function update() in MovieController
-        // per poi reindirizzarla nela rout list di comic.show 
+        // per poi reindirizzarla nela rout list di movie.show 
         // e averla in pagina
        /*  $movie = new Movie();
 
  */
 
         //richiamo la funzione validation() con tutte le request 
-        $this->validation($request->all());
+        //$this->validation($request->all());
+        $request->validated();
  
         $movie->title = $request->title;
         $movie->description = $request->description;
@@ -130,40 +134,6 @@ class MovieController extends Controller
     //e la comunizaizone dei messaggi di errore nella pagina create.blade.php
     //poi richiameremo i metodi nello store e nell'update
 
-    private function validation($data){
-        //introduco la variabile validator
-        $validator = Validator::make($data, [
-            'title'=> 'required|max:255',
-            'description'=> 'nullable|max:1500',
-            'thum'=>'nullable|max:1500',
-            'price'=>'required|max:6',
-            'series'=>'required|max:255',
-            'sale_date'=>'required|max:10',
-            'type'=>'required|max:100',
-            'artists'=>'required|max:2000',
-            'writers'=>'required|max:2000',
-        ], [
-            'title.required'=> 'Devi inserire il titolo',
-            'title.max'=> 'Il titolo deve contenere massimo :max caratteri',
-            'description.max'=> 'La descrizione deve contenere massimo :max caratteri',
-            'thum.max'=> "l'url deve contenere massimo :max caratteri",
-            'price.required'=> 'Devi inserire il prezzo',
-            'price.max'=> 'Il prezzo deve contenere massimo :max caratteri',
-            'series.required'=> 'Devi inserire la serie',
-            'series.max'=> 'La serie deve contenere massimo :max caratteri',
-            'sale_date.required'=> 'Devi inserire la data di uscita in formato YYYY-MM-GG',
-            'sale_date.max'=> 'La data di uscita deve contenere massimo :max caratteri',
-            'type.required'=> 'Devi inserire la tipologia',
-            'type.max'=> 'La tipologia deve contenere massimo :max caratteri',
-            'artists.required'=> "Devi inserire l'artista o gli artisti",
-            'artists.max'=> 'Il campo per gli artisti deve contenere massimo :max caratteri',
-            'writers.required'=> "Devi inserire lo scrittore o gli scrittori",
-            'writers.max'=> 'Il campo per gli scrittori deve contenere massimo :max caratteri',
-            
-            
-            
-        ])->validate();
-
-    }
+   
    
 }
