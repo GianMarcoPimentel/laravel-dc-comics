@@ -12,4 +12,17 @@ class Movie extends Model
 
     //aggiungo la softDeletes
     use SoftDeletes;
+
+    // inserisco la proprietà fillable() per automatitazzare il codice
+    protected $fillable = [
+        'title',
+        'description',
+        'thum',
+        'price',
+        'series',
+        'sale_date',
+        'type',
+        'artists',
+        'writers',
+    ];
 }

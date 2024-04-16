@@ -51,7 +51,8 @@ class MovieController extends Controller
 
         $newMovie = new Movie();
 
-        $newMovie->title = $request->title;
+        $newMovie->fill($request->all());
+       /*  $newMovie->title = $request->title;
         $newMovie->description = $request->description;
         $newMovie->thumb = $request->thumb;
         $newMovie->price = $request->price;
@@ -60,7 +61,7 @@ class MovieController extends Controller
         $newMovie->type = $request->type;
         $newMovie->artists = $request->artists;
         $newMovie->writers = $request->writers;
-        
+         */
         $newMovie->save();
 
         return redirect()->route('movies.index');
@@ -101,8 +102,14 @@ class MovieController extends Controller
         //richiamo la funzione validation() con tutte le request 
         //$this->validation($request->all());
         $request->validated();
+
+        //$movie->fill($request->all());
+        
+        //oppure
+
+        $movie->update($request->all());
  
-        $movie->title = $request->title;
+       /*  $movie->title = $request->title;
         $movie->description = $request->description;
         $movie->thumb = $request->thumb;
         $movie->price = $request->price;
@@ -110,7 +117,7 @@ class MovieController extends Controller
         $movie->sale_date = $request->sale_date;
         $movie->type = $request->type;
         $movie->artists = $request->artists;
-        $movie->writers = $request->writers;
+        $movie->writers = $request->writers; */
         
         $movie->save();
 
